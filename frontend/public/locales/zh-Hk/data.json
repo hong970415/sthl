@@ -1,0 +1,151 @@
+{
+  "login": "登入",
+  "signup": "註冊",
+  "get_started": "Get started",
+  "github": "GitHub",
+  "hero_title": "A Simple Sass Platform",
+  "hero_title_forfun": "For Fun",
+  "hero_description": "Build your simple e-commerce website",
+  "general": {
+    "welcome": "歡迎",
+    "login": "登入",
+    "logout": "登出",
+    "signup": "註冊",
+    "email": "電子郵件",
+    "account": "帳戶",
+    "password": "密碼",
+    "current_password": "舊密碼",
+    "new_password": "新密碼",
+    "confirm_password": "確認密碼",
+    "confirm_new_password": "確認新密碼",
+    "no_account": "沒有帳戶?",
+    "have_account": "已有帳戶?",
+    "search": "搜尋",
+    "cancel": "取消",
+    "create": "新增",
+    "edit": "編輯",
+    "update": "更新",
+    "clear": "清空",
+    "nothing_found": "什麼都沒找到",
+    "total": "總共",
+    "language": "語言",
+    "dark_mode": "Dark mode",
+    "change_pw": "改變密碼",
+    "success": "成功",
+    "fail": "失敗",
+    "upload_img": "新增圖片"
+  },
+  "sidebar": {
+    "dashboard": "主頁面",
+    "album": "相簿",
+    "sitedesign": "網頁",
+    "product": "商品",
+    "order": "訂單",
+    "logistic": "物流",
+    "member": "會員",
+    "payment": "付款",
+    "setting": "設定"
+  },
+  "error": {
+    "required_error": "必填",
+    "login_form_email_error": "無效電子郵件",
+    "login_form_email_length_error": "長度: 6-255",
+    "login_form_pw_length_error": "長度: 6-255",
+    "signup_form_email_length_error": "長度: 6-255",
+    "signup_form_pw_length_error": "長度: 6-255",
+    "signup_form_pw_not_match_error": "密碼不相符",
+    "product_form_name_length_error": "字數限制: 50",
+    "product_form_price_moreThan_error": "最低價格: 0.01",
+    "product_form_quantity_min_error": "最低數量: 0",
+    "product_form_description_length_error": "字數限制: 200",
+    "order_form_purchasedPrice_moreThan_error": "最低價格: 0.01",
+    "order_form_quantity_min_error": "最低數量: 1"
+  },
+  "dashboard": {
+    "album_content": "首先先上載一些圖片",
+    "sitedesign_content": "你可以在此更改你的網頁介面內容",
+    "product_content": "你可以在此查看/更改你的商品",
+    "order_content": "你可以在此查看/更改你的訂單",
+    "setting_content": "你可以在此更改語言，dark mode，和你的密碼"
+  },
+  "album": {
+    "img": "圖片",
+    "img_name": "圖片名稱",
+    "img_size": "圖片大小",
+    "createdAt": "創建時間",
+    "updatedAt": "更新時間"
+  },
+  "site": {
+    "view_your_site": "查看你的網頁",
+    "sitename": "網頁名稱",
+    "hero_img": "首圖",
+    "hero_title": "首圖標題",
+    "hero_title_color": "首圖標題顏色"
+  },
+  "product": {
+    "search_placeholder": "搜尋名字/ID",
+    "id": "ID",
+    "name": "商品名稱",
+    "description": "描述",
+    "price": "價格",
+    "quantity": "數量",
+    "createdAt": "創建時間",
+    "updatedAt": "更新時間",
+    "add_product": "新增商品",
+    "product_detail": "商品詳情",
+    "status": "商品狀態",
+    "img": "商品圖像"
+  },
+  "order": {
+    "search_placeholder": "搜尋ID",
+    "id": "ID",
+    "items": "物品",
+    "discount": "折扣",
+    "totalAmount": "總共",
+    "remark": "備注",
+    "status": "狀態",
+    "paymentStatus": "付款狀態",
+    "paymentMethod": "付款方式",
+    "deliveryStatus": "送貨狀態",
+    "shippingAddress": "送貨地址",
+    "trackingNumber": "追踪號碼",
+    "createdAt": "創建時間",
+    "updatedAt": "更新時間",
+    "product_id": "商品ID",
+    "purchasedPrice": "價格",
+    "quantity": "數量",
+    "add_order": "新增訂單",
+    "order_detail": "訂單詳情",
+    "avail": "剩餘"
+  },
+  "productStatus": {
+    "initiated": "已新增",
+    "active": "活躍",
+    "outOfStock": "缺貨",
+    "inactive": "非活躍"
+  },
+  "orderStatus": {
+    "initiated": "已新增",
+    "confirmed": "已確認",
+    "shipping": "運送中",
+    "canceled": "已取消",
+    "completed": "已完成"
+  },
+  "paymentStatus": {
+    "pending": "等待中",
+    "fail": "失敗",
+    "paid": "已全付",
+    "refunded": "已退款",
+    "partialRefunded": "已部份退款",
+    "noRefund": "沒有退款",
+    "voided": "取消"
+  },
+  "paymentMethod": {
+    "card": "卡"
+  },
+  "deliveryStatus": {
+    "pending": "等待中",
+    "shipping": "運送中",
+    "completed": "已完成"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "login": "Login",
+  "signup": "Signup",
+  "get_started": "Get started",
+  "github": "GitHub",
+  "hero_title": "A Simple Sass Platform",
+  "hero_title_forfun": "For Fun",
+  "hero_description": "Build your simple e-commerce website",
+  "general": {
+    "welcome": "Welcome",
+    "login": "Log In",
+    "logout": "Logout",
+    "signup": "Sign Up",
+    "email": "Email",
+    "account": "Account",
+    "password": "Password",
+    "current_password": "Current password",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "confirm_new_password": "Confirm new password",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "search": "Search",
+    "cancel": "Cancel",
+    "create": "Create",
+    "edit": "Edit",
+    "update": "Update",
+    "clear": "Clear",
+    "nothing_found": "Nothing found",
+    "total": "Total",
+    "language": "Language",
+    "dark_mode": "Dark mode",
+    "change_pw": "Change password",
+    "success": "Success",
+    "fail": "Fail",
+    "upload_img": "Upload image"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "album": "Album",
+    "sitedesign": "Website",
+    "product": "Product",
+    "order": "Order",
+    "logistic": "Logistic",
+    "member": "Member",
+    "payment": "Payment",
+    "setting": "Setting"
+  },
+  "error": {
+    "required_error": "Required",
+    "login_form_email_error": "Not a vaild email",
+    "login_form_email_length_error": "Length: 6-255",
+    "login_form_pw_length_error": "Length: 6-255",
+    "signup_form_email_length_error": "Length: 6-255",
+    "signup_form_pw_length_error": "Length: 6-255",
+    "signup_form_pw_not_match_error": "Passwords must match",
+    "product_form_name_length_error": "Maximum length: 50",
+    "product_form_price_moreThan_error": "Minimum price: 0.01",
+    "product_form_quantity_min_error": "Minimum quantity: 0",
+    "product_form_description_length_error": "Maximum length: 200",
+    "order_form_purchasedPrice_moreThan_error": "Minimum price: 0.01",
+    "order_form_quantity_min_error": "Minimum quantity: 1"
+  },
+  "dashboard": {
+    "album_content": "Upload some images first for later adopation",
+    "sitedesign_content": "You can edit some content for your website",
+    "product_content": "You can create some products which will be shown in your website",
+    "order_content": "You can view your orders which are created on your website",
+    "setting_content": "You can change language, dark mode, and your password"
+  },
+  "album": {
+    "img": "Image",
+    "img_name": "Image name",
+    "img_size": "Image size",
+    "createdAt": "Created at",
+    "updatedAt": "Last updated"
+  },
+  "site": {
+    "view_your_site": "View your site",
+    "sitename": "Site name",
+    "hero_img": "Hero image",
+    "hero_title": "Hero title",
+    "hero_title_color": "Hero title color"
+  },
+  "product": {
+    "search_placeholder": "Search by ID/Name",
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "price": "Price",
+    "quantity": "Quantity",
+    "createdAt": "Created at",
+    "updatedAt": "Last updated",
+    "add_product": "Add Product",
+    "product_detail": "Product Detail",
+    "status": "Status",
+    "img": "Image"
+  },
+  "order": {
+    "search_placeholder": "Search by ID",
+    "id": "ID",
+    "items": "Items",
+    "discount": "Discount",
+    "totalAmount": "Total amount",
+    "remark": "Remark",
+    "status": "Status",
+    "paymentStatus": "Payment status",
+    "paymentMethod": "Payment method",
+    "deliveryStatus": "Delivery status",
+    "shippingAddress": "Shipping address",
+    "trackingNumber": "Tracking number",
+    "createdAt": "Created at",
+    "updatedAt": "Last updated",
+    "product_id": "Product ID",
+    "purchasedPrice": "Price",
+    "quantity": "Quantity",
+    "add_order": "Add Order",
+    "order_detail": "Order Detail",
+    "avail": "Avail."
+  },
+  "productStatus": {
+    "initiated": "Initiated",
+    "active": "Active",
+    "outOfStock": "Out Of Stock",
+    "inactive": "Inactive"
+  },
+  "orderStatus": {
+    "initiated": "Initiated",
+    "confirmed": "Confirmed",
+    "shipping": "Shipping",
+    "canceled": "Canceled",
+    "completed": "Completed"
+  },
+  "paymentStatus": {
+    "pending": "Pending",
+    "fail": "Fail",
+    "paid": "Paid",
+    "refunded": "Refunded",
+    "partialRefunded": "PartialRefunded",
+    "noRefund": "NoRefund",
+    "voided": "Voided"
+  },
+  "paymentMethod": {
+    "card": "Card"
+  },
+  "deliveryStatus": {
+    "pending": "Pending",
+    "shipping": "Shipping",
+    "completed": "Completed"
+  }
+}

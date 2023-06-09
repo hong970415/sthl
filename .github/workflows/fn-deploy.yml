@@ -1,0 +1,119 @@
+name: Frontend service deploy
+on:
+  workflow_dispatch:
+    inputs:
+      commitShaToBuild:
+        description: "Git SHA to build"
+        required: false
+env:
+  CommitShaToBuild: ${{ github.event.inputs.commitShaToBuild || github.sha }}
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      commitShaToBuild: ${{ env.CommitShaToBuild }}
+      nodeEnv: ${{ steps.prepare-config.outputs.nodeEnv }} # dev/prod
+      awsRegion: ${{ steps.prepare-config.outputs.awsRegion }}
+      ecrRepoName: ${{ steps.prepare-config.outputs.ecrRepoName }}
+    steps:
+      - name: Prepare config
+        id: prepare-config
+        run: |
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            NODEENV="prod"
+          elif [[ "${{ github.ref_name }}" == "dev" ]]; then
+            NODEENV="dev"
+          else
+            echo "Invalid branch specified for repository."
+            exit 1
+          fi
+          echo "branch: ${{ github.ref_name }}"
+          echo "nodeEnv=$NODEENV" >> "$GITHUB_OUTPUT"
+          echo "awsRegion=ap-east-1" >> "$GITHUB_OUTPUT"
+          echo "ecrRepoName=sthl-frontend-$NODEENV" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    outputs:
+      imageURL: ${{ steps.build-image.outputs.imageURL }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.prepare.outputs.commitShaToBuild }}
+          fetch-depth: 0
+
+      - name: Print config
+        run: |
+          echo "commitShaToBuild: ${{ needs.prepare.outputs.commitShaToBuild }}"
+          echo "nodeEnv: ${{ needs.prepare.outputs.nodeEnv }}"
+          echo "ecrRepoName: ${{ needs.prepare.outputs.ecrRepoName }}"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ needs.prepare.outputs.awsRegion }}
+          mask-aws-account-id: false
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push docker image to Amazon ECR
+        id: build-image
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ needs.prepare.outputs.ecrRepoName }}
+          IMAGE_TAG: ${{ needs.prepare.outputs.commitShaToBuild }}
+        run: |
+          IMAGE_URL=$REGISTRY/$REPOSITORY:$IMAGE_TAG
+          echo "imageURL=$IMAGE_URL" >> "$GITHUB_OUTPUT"
+          docker build -t $IMAGE_URL --build-arg BUILD_ENV=${{ needs.prepare.outputs.nodeEnv }} .
+          docker push $IMAGE_URL
+
+  deploy:
+    needs: [prepare, build]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra/${{ needs.prepare.outputs.nodeEnv }}/service_fn
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ needs.prepare.outputs.awsRegion }}
+
+      - name: Install terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4.6
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: echo
+        run: |
+          echo "1: ${{ needs.build.outputs.imageURL }}"
+
+      - name: tree
+        run: ls -a -l
+
+      - name: Terraform init
+        run: terraform init
+
+      - name: Terraform apply
+        run: |
+          export TF_VAR_aws_region=${{ needs.prepare.outputs.awsRegion }}
+          export TF_VAR_aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}
+          export TF_VAR_aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          export TF_VAR_ecs_task_frontend_image_url=${{ needs.build.outputs.imageURL }}
+          terraform apply -auto-approve
