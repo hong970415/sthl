@@ -8,6 +8,7 @@ Welcome to sthl! This is a mono repository that contains both the frontend, back
 
 1. [Usage](#usage)
 1. [Technologies Used](#technologies-used)
+1. [Folder structure](#folder-structure)
 1. [Features](#features)
 1. [Getting start for local development](#getting-start-for-local-development)
 
@@ -57,6 +58,52 @@ After customers purchase, user can view their orders in cms.
 - Database: PostgreSQL
 
 - Infrastructure Provisioning: Terraform + aws
+
+<p align="right"><a href="#top">Back to top</a></p>
+
+## Folder structure
+
+```
+.
+├── README.md
+├── docker-compose.yml                 // to build required infra locally for local development: db and s3
+├── backend
+│   ├── api                            // Inject services for handlers registration with router
+│   ├── authentication                 // jwt, password hashing, etc
+│   ├── config                         // port, db config
+│   ├── constants                      // fixed value
+│   ├── docs                           // swagger
+│   ├── logger                         // logger
+│   ├── storage                        // db connection client, s3 client, and mock db by docker container
+│   ├── ent                            // orm, modeling
+│   ├── repository                     // repository pattern deal with db layer
+│   ├── dto                            // dto
+│   ├── service                        // main logic
+│   ├── server                         // http server
+│   ├── utils                          // utils
+│   ├── go.mod
+│   ├── go.sum
+│   ├── Dockerfile
+│   ├── Makefile
+│   └── main.go                        // entry point by running "go run main.go"
+├── frontend
+│   ├── public                         // images
+│   ├── src
+│   ├── jest.config.js
+│   ├── jest.setup.js
+│   ├── next-env.d.ts
+│   ├── next-i18next.config.js
+│   ├── next.config.js
+│   ├── package.json
+│   ├── Dockerfile
+│   ├── tsconfig.json
+│   ├── yarn.lock
+│   └── README.md
+└── infra                              // terraform aws provision
+    ├── dev
+    ├── global
+    └── modules
+```
 
 <p align="right"><a href="#top">Back to top</a></p>
 

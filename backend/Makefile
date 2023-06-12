@@ -3,9 +3,9 @@ schemabuild:
 	go generate ./ent
 	go run -mod=mod entgo.io/ent/cmd/ent generate --feature sql/upsert ./ent/schema
 
-linting:
-	@echo "linting..."
-	golangci-lint run
+tidy:
+	@echo "go mod tidy..."
+	go mod tidy
 
 docsbuild:
 	@echo "updating swagger..."
@@ -34,5 +34,3 @@ test_api_integration:
 test_all:
 	@echo "Unit Testing all package..."
 	go test -race -count=1 -v ./... -short
-
-
