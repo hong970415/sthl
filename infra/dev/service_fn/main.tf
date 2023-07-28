@@ -52,7 +52,7 @@ module "frontend" {
   }])
   ecs_service_name                = "frontend-service-dev"
   ecs_cluster_id                  = data.terraform_remote_state.core.outputs.aws_ecs_cluster_id
-  ecs_service_desired_count       = 1
+  ecs_service_desired_count       = 0
   ecs_service_security_groups     = [data.terraform_remote_state.core.outputs.aws_security_group_apps_id]
   ecs_service_subnets             = [data.terraform_remote_state.core.outputs.aws_subnet_public_a_id, data.terraform_remote_state.core.outputs.aws_subnet_public_b_id]
   ecs_service_lb_target_group_arn = data.terraform_remote_state.core.outputs.aws_lb_target_group_frontend_arn
